@@ -1,4 +1,4 @@
-# example project for modul 1 & 2
+# PRAKTIKUM MODUL 1 PEMROGRAMAN WEB - KELOMPOK P08
 
 This template should help get you started developing with Vue 3 in Vite.
 
