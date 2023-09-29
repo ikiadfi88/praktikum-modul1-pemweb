@@ -12,6 +12,6 @@ import Navbar from "./components/Navbar.vue";
 
 <style>
 .router-link-active {
-  @apply bg-gray-900 text-white hover:text-white hover:bg-gray-900;
+  @apply bg-sky-800 text-white hover:text-white hover:bg-sky-800;
 }
 </style>

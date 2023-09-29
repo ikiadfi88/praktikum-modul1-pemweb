@@ -1,67 +1,62 @@
 <template>
-    <div class="m-5 flex flex-col items-center justify-center gap-5">
-      <div
-        class="block p-6 lg:w-1/2 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-      >
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" class="px-6 py-3">Asisten</th>
-                <th scope="col" class="px-6 py-3">NRP</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in asist" :key="index" ref="asist">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {{ item.name }}
-                </th>
-                <td class="px-6 py-4">{{ item.nrp }}</td>
-              </tr>
-            </tbody>
-          </table>
+  <section class="justify-center text-center m-24 text-sky-800">
+    <h1 class="text-6xl font-bold">Meet Our Team</h1>
+    <p class="caption" style="padding-bottom: 3rem">Halo, kami dari kelompok P08 Praktikum Pemrograman Web</p>
+    <div class="flex flex-wrap justify-center gap-10">
+      <div class="card p-8 h-80 bg-white shadow-lg text-center rounded-2xl overflow-hidden transition-transform hover:scale-90">
+        <div>
+          <img src="../assets/images/adfi.jpg" alt="Adfi" class="border-8 h-48 w-48 rounded-full object-cover mx-auto" />
+        </div>
+        <div v-for="(item, index) in adfi" :key="index" ref="adfi" class="mt-4">
+          <h3 class="text-sky-800 text-lg font-bold mt-2">{{ item.name }}</h3>
+          <p class="text-sky-800 text-md">{{ item.nrp }}</p>
+        </div>
+      </div>
+      <div class="card p-8 h-80 bg-white shadow-lg text-center rounded-2xl overflow-hidden transition-transform hover:scale-90">
+        <div>
+          <img src="../assets/images/caca.jpg" alt="Caca" class="border-8 h-48 w-48 rounded-full object-cover mx-auto" />
+        </div>
+        <div v-for="(item, index) in caca" :key="index" ref="caca" class="mt-4">
+          <h3 class="text-sky-800 text-lg font-bold mt-2">{{ item.name }}</h3>
+          <p class="text-sky-800 text-md">{{ item.nrp }}</p>
+        </div>
+      </div>
+      <div class="card p-8 h-80 bg-white shadow-lg text-center rounded-2xl overflow-hidden transition-transform hover:scale-90">
+        <div>
+          <img src="../assets/images/hafiz.jpg" alt="Hafiz" class="border-8 h-48 w-48 rounded-full object-cover mx-auto" />
+        </div>
+        <div v-for="(item, index) in hafiz" :key="index" ref="hafiz" class="mt-4">
+          <h3 class="text-sky-800 text-lg font-bold mt-2">{{ item.name }}</h3>
+          <p class="text-sky-800 text-md">{{ item.nrp }}</p>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  
-  export default {
-    // template refs
-    mounted() {
-      console.log(this.$refs.asist);
-    },
-    data() {
-      return {
-        asist: [
-          {
-            name: "Wisnuyasha Faizal",
-            nrp: 5027211036
-          },
-          {
-            name: "Aloysius B. M.",
-            nrp: 5027211008
-          },
-          {
-            name: "Midyanisa Yuniar",
-            nrp: 5027211025
-          },
-          {
-            name: "Reynold Putra Merdeka",
-            nrp: 5027211034
-          },
-          {
-            name: "Rifqi Akhmad Maulana",
-            nrp: 5027211035
-          },
-          {
-            name: "Moh. Sulthan Arief Rahmatullah",
-            nrp: 5027211045
-          },
-        ]
-      }
-    }
-  };
-  </script>
-  
+  </section>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      adfi: [
+        {
+          name: "Iki Adfi Nur Mohamad",
+          nrp: 5027221033,
+        },
+      ],
+      hafiz: [
+        {
+          name: "Zulfa Hafizh Kusuma",
+          nrp: 5027221038,
+        },
+      ],
+      caca: [
+        {
+          name: "Salsabilla Amalia Harjanto",
+          nrp: 5027221033,
+        },
+      ],
+    };
+  },
+};
+</script>
