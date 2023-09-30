@@ -2,9 +2,9 @@ import { reactive } from "vue";
 
 export const userStore = reactive({
   users: [
-    { id: 0, nrp: "5027211036", name: "Inu", email: "inu@mail.com" },
-    { id: 1, nrp: "5027211008", name: "Aloy", email: "aloy@mail.com" },
-    { id: 2, nrp: "5027211035", name: "Rifki", email: "rifki@mail.com" },
+    { id: 0, nrp: "5027211036", name: "Inu", email: "inu@mail.com", priority: "low" },
+    { id: 1, nrp: "5027211008", name: "Aloy", email: "aloy@mail.com", priority: "low" },
+    { id: 2, nrp: "5027211035", name: "Rifki", email: "rifki@mail.com", priority: "low" },
   ],
   createUser(user) {
     this.users.push(user);
