@@ -9,6 +9,7 @@ export default {
       inputName: "",
       inputNrp: "",
       inputEmail: "",
+      inputPriority: "",
     };
   },
   methods: {
@@ -16,7 +17,8 @@ export default {
       if (
         this.inputName === "" ||
         this.inputNrp === "" ||
-        this.inputEmail === ""
+        this.inputEmail === "" ||
+        this.inputpriority === ""
       )
         return;
       const newUser = {
@@ -24,11 +26,13 @@ export default {
         name: this.inputName,
         nrp: this.inputNrp,
         email: this.inputEmail,
+        priority: this.inputpriority,
       };
       userStore.createUser(newUser);
       this.inputName = "";
       this.inputNrp = "";
       this.inputEmail = "";
+      this.inputpriority = "";
       this.$emit("close-modal");
     },
   },
@@ -58,6 +62,15 @@ export default {
         v-model="inputEmail"
         class="border-2 py-1 border-gray-400 rounded-md"
       />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="text-gray-700 font-semibold">Priority</label>
+      <select v-model="inputpriority"
+      class="border-2 py-1 border-gray-400 rounded-md">
+								<option>Low</option>
+								<option>Medium</option>
+								<option>High</option>
+							</select>
     </div>
   </div>
   <button

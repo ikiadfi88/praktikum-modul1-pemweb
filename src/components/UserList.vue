@@ -17,6 +17,7 @@ export default {
         <th class="p-3 text-sm font-bold tracking-wide">Name</th>
         <th class="p-1 text-sm font-bold tracking-wide">NRP</th>
         <th class="p-1 text-sm font-bold tracking-wide">Email</th>
+        <th class="p-1 text-sm font-bold tracking-wide">Priority</th>
         <th class="p-1 text-sm font-bold tracking-wide">Actions</th>
       </tr>
     </thead>
@@ -33,6 +34,9 @@ export default {
         </th>
         <th class="p-3 text-sm text-gray-700 font-normal">
           {{ user.email }}
+        </th>
+        <th class="p-3 text-sm text-gray-700 font-normal">
+          {{ user.priority }}
         </th>
         <th>
           <div class="flex justify-center gap-4 items-center h-full w-full">
