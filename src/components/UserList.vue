@@ -10,32 +10,32 @@ export default {
 </script>
 
 <template>
-  <table>
-    <thead class="bg-gray-100 border-b-2 border-gray-300">
+  <table class="bg-white mt-2 rounded-xl overflow-hidden mb-3 shadow-md">
+    <thead class="bg-sky-700">
       <tr>
-        <th class="p-1 text-sm font-bold tracking-wide">No.</th>
-        <th class="p-3 text-sm font-bold tracking-wide">Name</th>
-        <th class="p-1 text-sm font-bold tracking-wide">NRP</th>
-        <th class="p-1 text-sm font-bold tracking-wide">Email</th>
-        <th class="p-1 text-sm font-bold tracking-wide">Priority</th>
-        <th class="p-1 text-sm font-bold tracking-wide">Actions</th>
+        <th class="text-sm font-bold p-3 text-white">No.</th>
+        <th class="text-sm font-bold p-3 text-white">Name</th>
+        <th class="text-sm font-bold p-3 text-white">NRP</th>
+        <th class="text-sm font-bold p-3 text-white">Email</th>
+        <th class="text-sm font-bold p-3 text-white">Priority</th>
+        <th class="text-sm font-bold p-3 text-white">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr class="border-b" v-for="(user, index) in userStore.users" :key="user.id">
-        <th class="p-3 text-sm text-gray-700 font-normal">
+        <th class="text-sm text-gray-700 font-normal p-3">
           {{ index + 1 }}
         </th>
-        <th class="p-3 text-sm text-gray-700 font-normal">
+        <th class="text-sm text-gray-700 font-normal p-3">
           {{ user.name }}
         </th>
-        <th class="p-3 text-sm text-gray-700 font-normal">
+        <th class="text-sm text-gray-700 font-normal">
           {{ user.nrp }}
         </th>
-        <th class="p-3 text-sm text-gray-700 font-normal">
+        <th class="text-sm text-gray-700 font-normal">
           {{ user.email }}
         </th>
-        <th class="p-3 text-sm text-gray-700 font-normal">
+        <th class="text-sm text-gray-700 font-normal">
           {{ user.priority }}
         </th>
         <th>
