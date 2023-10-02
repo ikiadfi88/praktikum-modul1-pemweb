@@ -18,27 +18,27 @@
       <div class="flex flex-col gap-4">
         <div class="flex flex-col">
           <label class="text-gray-700 font-semibold">Name</label>
-          <input
-            v-model="inputNewName"
-            class="border rounded-md px-3 py-2 border-gray-400 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <div class="flex flex-col">
-          <label class="text-gray-700 font-semibold">NRP</label>
-          <input
-            v-model="inputNewNrp"
-            class="border rounded-md px-3 py-2 border-gray-400 focus:outline-none focus:border-blue-500"
-            
-          />
-        </div>
-        <div class="flex flex-col">
-          <label class="text-gray-700 font-semibold">Email</label>
-          <input
-            v-model="inputNewEmail"
-            class="border rounded-md px-3 py-2 border-gray-400 focus:outline-none focus:border-blue-500"
-            
-          />
-        </div>
+      <input
+        v-model="inputNewName"
+        class="border-2 py-1 border-gray-400 rounded-md"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="text-gray-700 font-semibold">Deadline</label>
+      <input
+        type="date"
+        v-model="inputNewDeadline"
+        class="border-2 py-1 border-gray-400 rounded-md"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="text-gray-700 font-semibold">Priority</label>
+      <select v-model="inputNewPriority" class="border-2 py-1 border-gray-400 rounded-md">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      </div>
       </div>
       <button
         @click="updateUser(this.id)"
@@ -58,8 +58,8 @@ export default {
       userStore,
       id: this.$route.params.id,
       inputNewName: "",
-      inputNewNrp: "",
-      inputNewEmail: "",
+      inputNewDeadline: "",
+      inputNewPriority: "",
     };
   },
   methods: {
@@ -67,16 +67,17 @@ export default {
       const user = this.userStore.users.find((user) => user.id === parseInt(this.id) || user.id === this.id);
       if (user) {
         this.inputNewName = user.name;
-        this.inputNewNrp = user.nrp;
-        this.inputNewEmail = user.email;
+        this.inputNewDeadline = user.Deadline;
+        this.inputNewPriority = user.Priority;
       }
     },
     updateUser(index){
         const updatedUser = {
             id: index,
             name: this.inputNewName,
-            nrp: this.inputNewNrp,
-            email: this.inputNewEmail,
+            Deadline: this.inputNewDeadline,
+            Priority: this.inputNewPriority,
+            status: "1",
         };
         userStore.editUser(updatedUser)
         this.$router.push('/');
