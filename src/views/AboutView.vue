@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <Navbar />
+  </header>
   <section class="justify-center text-center m-24 text-sky-800">
     <h1 class="text-6xl font-bold">Meet Our Team</h1>
     <p class="caption" style="padding-bottom: 3rem">Halo, kami dari kelompok P08 Praktikum Pemrograman Web</p>
@@ -35,7 +38,11 @@
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 export default {
+  components: {
+    Navbar,
+  },
   data() {
     return {
       adfi: [

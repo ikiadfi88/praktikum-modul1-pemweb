@@ -1,34 +1,38 @@
 <script>
-import { userStore } from "../store/store.js";
-import Modal from "../components/Modal.vue";
-import CreateUserForm from "../components/CreateUserForm.vue";
+import { todoStore } from "../store/store.js";
+import Popup from "../components/Popup.vue";
+import AddToDo from "../components/AddToDo.vue";
 
 export default {
   components: {
-    Modal,
-    CreateUserForm,
+    Popup,
+    AddToDo,
   },
   data() {
     return {
-      userStore,
-      isModal: false,
+      todoStore,
+      isPopup: false,
     };
   },
   methods: {
-    toggleModal() {
-      this.isModal = !this.isModal;
+    togglePopup() {
+      this.isPopup = !this.isPopup;
+    },
+    deleteAllTodos() {
+      todoStore.deleteAllTodos();
     },
   },
 };
 </script>
 
 <template>
-  <span class="font-bold text-4xl text-sky-700">P08 Group To Do</span>
-  <span class="font-base text-sm text-slate-400">{{ userStore.users.length }} To Do</span>
-  <div class="w-full flex justify-end">
-    <button @click="toggleModal" class="px-6 py-2 bg-sky-700 text-white font-bold mb-2 w-fit border-[1.5px] hover:scale-110 transition-all hover:ease-in-out hover:duration-300 rounded-xl text-sm">Add To Do</button>
-    <Modal @close-modal="toggleModal" :isModal="isModal">
-      <CreateUserForm @close-modal="toggleModal" />
-    </Modal>
+  <span class="font-bold text-4xl text-sky-800">Smart To Do</span>
+  <span class="font-base text-sm text-slate-400">{{ todoStore.todos.length }} To Do</span>
+  <div class="w-full flex justify-end gap-3">
+    <button @click="togglePopup" class="px-6 py-2 bg-green-600 text-white font-bold mb-2 w-fit border-[1.5px] hover:scale-110 transition-all hover:ease-in-out hover:duration-300 rounded-xl text-sm">+ Add</button>
+    <Popup @close-Popup="togglePopup" :isPopup="isPopup">
+      <AddToDo @close-Popup="togglePopup" />
+    </Popup>
+    <button @click="deleteAllTodos" class="px-6 py-2 bg-red-700 text-white font-bold mb-2 w-fit border-[1.5px] hover:scale-110 transition-all hover:ease-in-out hover:duration-300 rounded-xl text-sm">- Delete All</button>
   </div>
 </template>

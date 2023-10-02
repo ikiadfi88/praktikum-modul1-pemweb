@@ -1,28 +1,45 @@
 import { reactive } from "vue";
 
-export const userStore = reactive({
-  users: [
-    { id: 0, nrp: "5027211036", name: "Inu", email: "inu@mail.com", priority: "low" },
-    { id: 1, nrp: "5027211008", name: "Aloy", email: "aloy@mail.com", priority: "low" },
-    { id: 2, nrp: "5027211035", name: "Rifki", email: "rifki@mail.com", priority: "low" },
-  ],
-  createUser(user) {
-    this.users.push(user);
+// Fungsi untuk menyimpan data ke local storage
+const saveToLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
+// Fungsi untuk mengambil data dari local storage
+const getFromLocalStorage = (key) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+};
+
+export const todoStore = reactive({
+  todos: getFromLocalStorage("todos") || [],
+
+  createTodo(todo) {
+    this.todos.push(todo);
+    saveToLocalStorage("todos", this.todos);
   },
-  deleteUser(userId) {
-    const userIndex = this.users.findIndex((user) => user.id === userId);
-    console.log(userIndex)
-    if (userIndex !== -1) {
-      this.users.splice(userIndex, 1);
+
+  deleteTodo(todoId) {
+    const todoIndex = this.todos.findIndex((todo) => todo.id === todoId);
+    if (todoIndex !== -1) {
+      this.todos.splice(todoIndex, 1);
+      saveToLocalStorage("todos", this.todos);
     }
   },
-  editUser(updatedUser) {
-    const userIndex = userStore.users.findIndex((user) => user.id === updatedUser.id);
-    if (userIndex !== -1) {
-      userStore.users.splice(userIndex, 1, updatedUser);
+
+  updateTodo(updatedtodo) {
+    const todoIndex = this.todos.findIndex((todo) => todo.id === updatedtodo.id);
+    if (todoIndex !== -1) {
+      this.todos.splice(todoIndex, 1, updatedtodo);
     } else {
-      userStore.users.splice(userIndex + 1, 1, updatedUser);
+      // Jika pengguna tidak ditemukan, Anda dapat menambahkannya ke akhir array
+      this.todos.push(updatedtodo);
     }
-  }
-  
+    saveToLocalStorage("todos", this.todos);
+  },
+
+  deleteAllTodos() {
+    this.todos = []; // Menghapus semua elemen dalam array todos
+    saveToLocalStorage("todos", this.todos); // Menyimpan perubahan ke local storage
+  },
 });
