@@ -7,32 +7,24 @@ export default {
     return {
       userStore,
       inputName: "",
-      inputNrp: "",
-      inputEmail: "",
+      inputDeadline: "",
       inputPriority: "",
     };
   },
   methods: {
     addUser() {
-      if (
-        this.inputName === "" ||
-        this.inputNrp === "" ||
-        this.inputEmail === "" ||
-        this.inputpriority === ""
-      )
-        return;
+      if (this.inputName === "" || this.inputDeadline === "" || this.inputPriority === "") return;
       const newUser = {
         id: Date.now().toString(),
         name: this.inputName,
-        nrp: this.inputNrp,
-        email: this.inputEmail,
-        priority: this.inputpriority,
+        Deadline: this.inputDeadline,
+        Priority: this.inputPriority,
+        status: "1",
       };
       userStore.createUser(newUser);
       this.inputName = "";
-      this.inputNrp = "";
-      this.inputEmail = "";
-      this.inputpriority = "";
+      this.inputDeadline = "";
+      this.inputPriority = "";
       this.$emit("close-modal");
     },
   },
@@ -44,39 +36,21 @@ export default {
   <div class="flex flex-col gap-3">
     <div class="flex flex-col gap-1">
       <label class="text-gray-700 font-semibold">Name</label>
-      <input
-        v-model="inputName"
-        class="border-2 py-1 border-gray-400 rounded-md"
-      />
+      <input v-model="inputName" class="border-2 py-1 border-gray-400 rounded-md" />
     </div>
     <div class="flex flex-col gap-1">
-      <label class="text-gray-700 font-semibold">NRP</label>
-      <input
-        v-model="inputNrp"
-        class="border-2 py-1 border-gray-400 rounded-md"
-      />
-    </div>
-    <div class="flex flex-col gap-1">
-      <label class="text-gray-700 font-semibold">Email</label>
-      <input
-        v-model="inputEmail"
-        class="border-2 py-1 border-gray-400 rounded-md"
-      />
+      <label class="text-gray-700 font-semibold">Deadline</label>
+      <input type="date" v-model="inputDeadline" class="border-2 py-1 border-gray-400 rounded-md" />
     </div>
     <div class="flex flex-col gap-1">
       <label class="text-gray-700 font-semibold">Priority</label>
-      <select v-model="inputpriority"
-      class="border-2 py-1 border-gray-400 rounded-md">
-								<option>Low</option>
-								<option>Medium</option>
-								<option>High</option>
-							</select>
+      <select v-model="inputPriority" class="border-2 py-1 border-gray-400 rounded-md">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
     </div>
   </div>
-  <button
-    @click="addUser"
-    class="px-4 py-2 mt-1 bg-gray-700 w-fit h-fit text-gray-100 font-bold text-sm rounded-xl hover:scale-110 transition-all hover:ease-in-out hover:duration-300"
-  >
-    Submit
-  </button>
+
+  <button @click="addUser" class="px-4 py-2 mt-1 bg-gray-700 w-fit h-fit text-gray-100 font-bold text-sm rounded-xl hover:scale-110 transition-all hover:ease-in-out hover:duration-300">Submit</button>
 </template>
