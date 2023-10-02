@@ -22,6 +22,17 @@ export default {
       storedStatus[todo.id] = todo.status;
       localStorage.setItem("todoStatus", JSON.stringify(storedStatus));
     },
+    todoClasses(todo) {
+      const classes = {
+        'p-3': true,
+        'text-sm': true,
+        'text-gray-700': true,
+        'font-normal': true,
+        'strikethrough': todo.status === '3',
+        'highlight': todo.Priority === 'High'
+      };
+      return classes;
+    },
   },
 };
 </script>
@@ -31,7 +42,7 @@ export default {
     <thead class="bg-sky-800">
       <tr>
         <th class="p-1 text-sm font-bold tracking-wide text-white">No.</th>
-        <th class="p-3 text-sm font-bold tracking-wide text-white">Name</th>
+        <th class="p-3 text-sm font-bold tracking-wide text-white">Tasks</th>
         <th class="p-1 text-sm font-bold tracking-wide text-white">Deadline</th>
         <th class="p-1 text-sm font-bold tracking-wide text-white">Priority</th>
         <th class="p-1 text-sm font-bold tracking-wide text-white">Status</th>
@@ -40,18 +51,18 @@ export default {
     </thead>
     <tbody>
       <tr class="border-b" v-for="(todo, index) in todoStore.todos" :key="todo.id">
-        <th class="p-3 text-sm text-gray-700 font-normal">
-          {{ index + 1 }}
-        </th>
-        <th class="p-3 text-sm text-gray-700 font-normal" :class="{ strikethrough: todo.status === '3', highlight: todo.Priority === 'High' }">
-          {{ todo.name }}
-        </th>
-        <th class="p-3 text-sm text-gray-700 font-normal" :class="{ strikethrough: todo.status === '3', highlight: todo.Priority === 'High' }">
-          {{ todo.Deadline }}
-        </th>
-        <th class="p-3 text-sm text-gray-700 font-normal" :class="{ strikethrough: todo.status === '3', highlight: todo.Priority === 'High' }">
-          {{ todo.Priority }}
-        </th>
+    <th class="p-3 text-sm text-gray-700 font-normal" :class="todoClasses(todo)">
+      {{ index + 1 }}
+    </th>
+    <th class="p-3 text-sm text-gray-700 font-normal" :class="todoClasses(todo)">
+      {{ todo.name }}
+    </th>
+    <th class="p-3 text-sm text-gray-700 font-normal" :class="todoClasses(todo)">
+      {{ todo.Deadline }}
+    </th>
+    <th class="p-3 text-sm text-gray-700 font-normal" :class="todoClasses(todo)">
+      {{ todo.Priority }}
+    </th>
         <th class="p-3 text-sm text-gray-700 font-normal">
           <select
             v-model="todo.status"
